@@ -4,7 +4,7 @@
 # RStudio into a data frame.
 
 library(readr)
-refine_original <- read_csv("C:/Users/scotland/Dropbox/Springboard/R Projects/DW_Exercise_01/refine_original.csv")
+refine_original <- read_csv("C:/Users/Datahounds/Dropbox/Springboard/R Projects/DW_Exercise_01/refine_original.csv")
 
 library(dplyr)
 library(tidyr)
@@ -102,6 +102,8 @@ refine_df <- refine_df %>%
   mutate(company_unilever = if_else(company == "unilever", 1, 0))
 
 View(refine_df)
+
+write.table(refine_df, "C:/Users/Datahounds/Dropbox/Springboard/R Projects/DW_Exercise_01/refine_clean.csv", quote = TRUE, sep = ",", row.names = FALSE)
 
 
 
