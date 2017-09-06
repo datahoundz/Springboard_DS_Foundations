@@ -47,7 +47,7 @@ for (i in counter) {
   assign(paste(df_name), read_delim(file_loc, "\t", escape_double = FALSE, col_names = FALSE, trim_ws = TRUE))
 }
 
-View(data_06)
+View(data_67)
 
 summary(data_67)
 hist(as.numeric(data_67$X4))
@@ -66,6 +66,9 @@ glimpse(data_67)
 str(data_67)
 
 
+
+
+
 # data_67 issues with time field entries
 # can pad with leading 0 to correct some
 # others may need to be excluded (>24:00)
@@ -80,6 +83,7 @@ subject = data_24
   dt$X4 <- as.numeric(dt$X4)
   dt$X5 <- paste(mdy(dt$X1), hms(dt$X2))
   
+  dt$x6 <- as_datetime(dt$X5)
   
 dt[X3 > 35 & X4 > 20] %>%
   group_by(X3) %>%
@@ -91,7 +95,19 @@ ggplot(dt[X3 > 35 & X4 > 20], aes(x = X2, y = X4, col = as.factor(X3))) +
   facet_grid(. ~ X3) +
   geom_boxplot(alpha = 0.5)
 
-
-
+View(dt)
+mode(dt$x2)
+mode(dt$x6)
   
-
+head(dt$x6)
+ 
+# as.Date(as.character(dt$x4))Sep 5, 2017 12:12 PM
+# as.Date(as.character(dt$x4), format = "%H:%M")Sep 5, 2017 12:13 PM
+# http://www.statmethods.net/input/dates.htmlSep 5, 2017 12:13 PM
+# https://www.stat.berkeley.edu/~s133/dates.htmlSep 5, 2017 12:14 PM
+# format = "%Y-%m-%d"Sep 5, 2017 12:20 PM
+# 2017-08-09 12:14:25Sep 5, 2017 12:20 PM
+# format = "%Y-%m-%d %H:%M:%S"Sep 5, 2017 12:21 PM
+# rlangSep 5, 2017 12:29 PM
+# UQ(sym(var))Sep 5, 2017 12:29 PM
+# https://www.r-bloggers.com/looping-through-files/
