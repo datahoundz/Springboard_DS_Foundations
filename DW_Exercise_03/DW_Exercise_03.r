@@ -30,6 +30,7 @@
 # dt$X2 <- str_pad(dt$X2, width = 5, side = "left", pad = "0")
 
 
+library(rlang)
 library(data.table)
 library(readr)
 library(stringr)
@@ -47,7 +48,7 @@ for (i in counter) {
   assign(paste(df_name), read_delim(file_loc, "\t", escape_double = FALSE, col_names = FALSE, trim_ws = TRUE))
 }
 
-View(data_67)
+View(data_27)
 
 summary(data_67)
 hist(as.numeric(data_67$X4))
@@ -66,10 +67,7 @@ glimpse(data_67)
 str(data_67)
 
 
-
-
-
-# data_67 issues with time field entries
+# data_27,_29,_67 issues with time field entries
 # can pad with leading 0 to correct some
 # others may need to be excluded (>24:00)
 # concern about how to automatically detect in other files?
@@ -77,17 +75,17 @@ str(data_67)
 # would like to run sequence below as a function but can't seem to get filename
 # to be something other than text in quotes (data_01 vs "data_01") which results in error
 
-subject = data_24
+
+subject = data_65
 
   dt <- as.data.table(subject)
   dt$X4 <- as.numeric(dt$X4)
   dt$X5 <- paste(mdy(dt$X1), hms(dt$X2))
-  
-  dt$x6 <- as_datetime(dt$X5)
-  
+
+
 dt[X3 > 35 & X4 > 20] %>%
   group_by(X3) %>%
-  summarise(n(), mean(X4), min(X4), max(X4), min(X2), max(X2))
+  summarise(n(), mean(X4), min(X4), max(X4), first(X1), last(X1))
 
 
 ggplot(dt[X3 > 35 & X4 > 20], aes(x = X2, y = X4, col = as.factor(X3))) +
@@ -95,19 +93,36 @@ ggplot(dt[X3 > 35 & X4 > 20], aes(x = X2, y = X4, col = as.factor(X3))) +
   facet_grid(. ~ X3) +
   geom_boxplot(alpha = 0.5)
 
-View(dt)
-mode(dt$x2)
-mode(dt$x6)
-  
-head(dt$x6)
+
+# Code for "trouble" data files: data_27, data_29 & data_67
+
+subject = data_67
+
+dt <- as.data.table(subject)
+dt$X4 <- as.numeric(dt$X4)
+dt$X6 <- hm(str_pad(dt$X2, width = 5, side = "left", pad = "0"))
+dt$X5 <- paste(mdy(dt$X1), hms(dt$X6))
+
+
+dt[X3 > 35 & X4 > 20] %>%
+  group_by(X3) %>%
+  summarise(n(), mean(X4), min(X4), max(X4), first(X1), last(X1))
+
+
+ggplot(dt[X3 > 35 & X4 > 20], aes(x = as.numeric(X6), y = X4, col = as.factor(X3))) +
+  geom_point(position = "jitter") +
+  facet_grid(. ~ X3) +
+  geom_boxplot(alpha = 0.5)
+
+
  
-# as.Date(as.character(dt$x4))Sep 5, 2017 12:12 PM
-# as.Date(as.character(dt$x4), format = "%H:%M")Sep 5, 2017 12:13 PM
-# http://www.statmethods.net/input/dates.htmlSep 5, 2017 12:13 PM
-# https://www.stat.berkeley.edu/~s133/dates.htmlSep 5, 2017 12:14 PM
-# format = "%Y-%m-%d"Sep 5, 2017 12:20 PM
-# 2017-08-09 12:14:25Sep 5, 2017 12:20 PM
-# format = "%Y-%m-%d %H:%M:%S"Sep 5, 2017 12:21 PM
-# rlangSep 5, 2017 12:29 PM
-# UQ(sym(var))Sep 5, 2017 12:29 PM
+# as.Date(as.character(dt$x4))
+# as.Date(as.character(dt$x4), format = "%H:%M")
+# http://www.statmethods.net/input/dates.html
+# https://www.stat.berkeley.edu/~s133/dates.html
+# format = "%Y-%m-%d"
+# 2017-08-09 12:14:25
+# format = "%Y-%m-%d %H:%M:%S"
+# rlang
+# UQ(sym(var))
 # https://www.r-bloggers.com/looping-through-files/
