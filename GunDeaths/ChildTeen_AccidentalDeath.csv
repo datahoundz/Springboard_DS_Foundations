@@ -1,0 +1,53 @@
+Sum of # Killed,Column Labels,,,,,,,,,,,,,,,
+Row Labels,2014,2015,2016,2017,Grand Total,,,,,,,,State,Pop,Deaths,Ratio
+Alabama,4,3,9,10,26,5.35,Alabama,4858979,,,,,Alaska,"738,432",9,12.2
+Alaska, - ,4,3,2,9,35.21,Alaska,738432,,,,,Mississippi,"2,992,333",27,9.0
+Arizona,4,1,3,5,13,3.81,Arizona,6828065,,,,,Louisiana,"4,670,724",37,7.9
+Arkansas,2,7,2,8,19,8.73,Arkansas,2978204,,,,,South Carolina,"4,896,146",33,6.7
+California,1,7,5,5,18,0.66,California,39144818,,,,,Arkansas,"2,978,204",19,6.4
+Colorado,2,3,8,1,14,4.76,Colorado,5456574,,,,,Tennessee,"6,600,299",41,6.2
+Connecticut,1,1, - ,1,3,7.24,Connecticut,3590886,,,,,Idaho,"1,654,930",10,6.0
+District of Columbia, - ,1, - , - ,1,38.68,District of Columbia,672228,,,,,South Dakota,"858,469",5,5.8
+Florida,8,10,17,13,48,1.28,Florida,20271272,,,,,Alabama,"4,858,979",26,5.4
+Georgia,10,14,15,15,54,2.55,Georgia,10214860,,,,,Georgia,"10,214,860",54,5.3
+Hawaii, - , - ,1, - ,1,18.16,Hawaii,1431603,,,,,Oklahoma,"3,911,338",18,4.6
+Idaho,2,3,2,3,10,15.71,Idaho,1654930,,,,,Missouri,"6,083,672",27,4.4
+Illinois,3,5,5,6,19,2.02,Illinois,12859995,,,,,Kentucky,"4,425,092",18,4.1
+Indiana,6,1,11,8,26,3.93,Indiana,6619680,,,,,North Dakota,"756,927",3,4.0
+Iowa,2,1,5, - ,8,8.32,Iowa,3123899,,,,,Indiana,"6,619,680",26,3.9
+Kansas,2,2,2,3,9,8.93,Kansas,2911641,,,,,Montana,"1,032,949",4,3.9
+Kentucky,2,3,6,7,18,5.88,Kentucky,4425092,,,,,Michigan,"9,922,576",33,3.3
+Louisiana,6,11,11,9,37,5.57,Louisiana,4670724,,,,,Texas,"27,469,114",88,3.2
+Maine, - , - ,1,1,2,19.56,Maine,1329328,,,,,Kansas,"2,911,641",9,3.1
+Maryland, - ,1,3,1,5,4.33,Maryland,6006401,,,,,West Virginia,"1,844,128",5,2.7
+Massachusetts,2,1, - ,1,4,3.83,Massachusetts,6794422,,,,,Pennsylvania,"12,802,503",33,2.6
+Michigan,9,9,9,6,33,2.62,Michigan,9922576,,,,,Colorado,"5,456,574",14,2.6
+Minnesota,1,3, - ,1,5,4.74,Minnesota,5489594,,,,,Iowa,"3,123,899",8,2.6
+Mississippi,3,4,7,13,27,8.69,Mississippi,2992333,,,,,Ohio,"11,613,423",29,2.5
+Missouri,2,4,5,16,27,4.27,Missouri,6083672,,,,,Wisconsin,"5,771,337",14,2.4
+Montana,1,1,1,1,4,25.17,Montana,1032949,,,,,Florida,"20,271,272",48,2.4
+Nebraska, - , - , - ,1,1,13.71,Nebraska,1896190,,,,,Utah,"2,995,919",7,2.3
+Nevada,1, - ,1,2,4,8.99,Nevada,2890845,,,,,Virginia,"8,382,993",17,2.0
+New Hampshire, - , - , - ,1,1,19.54,New Hampshire,1330608,,,,,New Mexico,"2,085,109",4,1.9
+New Jersey, - , - ,2,1,3,2.9,New Jersey,8958013,,,,,Arizona,"6,828,065",13,1.9
+New Mexico,1,1, - ,2,4,12.47,New Mexico,2085109,,,,,North Carolina,"10,042,802",19,1.9
+New York,1,3,3,4,11,1.31,New York,19795791,,,,,Vermont,"626,042",1,1.6
+North Carolina,6,4,4,5,19,2.59,North Carolina,10042802,,,,,Maine,"1,329,328",2,1.5
+North Dakota,1, - ,2, - ,3,34.35,North Dakota,756927,,,,,District of Columbia,"672,228",1,1.5
+Ohio,3,10,9,7,29,2.24,Ohio,11613423,,,,,Illinois,"12,859,995",19,1.5
+Oklahoma,8,2,2,6,18,6.65,Oklahoma,3911338,,,,,Nevada,"2,890,845",4,1.4
+Oregon, - ,1,1, - ,2,6.45,Oregon,4028977,,,,,Washington,"7,170,351",9,1.3
+Pennsylvania,5,8,13,7,33,2.03,Pennsylvania,12802503,,,,,Minnesota,"5,489,594",5,0.9
+South Carolina,8,3,9,13,33,5.31,South Carolina,4896146,,,,,Connecticut,"3,590,886",3,0.8
+South Dakota, - ,2,1,2,5,30.29,South Dakota,858469,,,,,Maryland,"6,006,401",5,0.8
+Tennessee,7,8,12,14,41,3.94,Tennessee,6600299,,,,,New Hampshire,"1,330,608",1,0.8
+Texas,17,20,21,30,88,0.95,Texas,27469114,,,,,Hawaii,"1,431,603",1,0.7
+Utah,2,2, - ,3,7,8.68,Utah,2995919,,,,,Massachusetts,"6,794,422",4,0.6
+Vermont,1, - , - , - ,1,41.53,Vermont,626042,,,,,New York,"19,795,791",11,0.6
+Virginia,2,4,5,6,17,3.1,Virginia,8382993,,,,,Nebraska,"1,896,190",1,0.5
+Washington,2,2,2,3,9,3.63,Washington,7170351,,,,,Oregon,"4,028,977",2,0.5
+West Virginia,1, - ,4, - ,5,14.1,West Virginia,1844128,,,,,California,"39,144,818",18,0.5
+Wisconsin,3,3,2,6,14,4.51,Wisconsin,5771337,,,,,New Jersey,"8,958,013",3,0.3
+Grand Total,142,173,224,249,788,,,,,,,,Delaware,"945,934",0,0.0
+,,,,,,,,,,,,,Rhode Island,"1,056,298",0,0.0
+,,,,,,,,,,,,,Wyoming,"586,107",0,0.0
