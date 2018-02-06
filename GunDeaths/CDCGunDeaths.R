@@ -2,15 +2,16 @@ library(xml2)
 library(readxl)
 library(readr)
 library(dplyr)
+library(purrr)
 library(ggplot2)
 
 setwd("C:/Users/Datahounds/Dropbox/Springboard/R Projects/GunDeaths")
 
 # Items to work on:
-# 1. Eliminate comment rows on import or after
-# 2. Replacing suppressed counts w/ State average
-# 3. Adrressing missing data rows via Population table
-# 4. Final table layout
+# 1. Eliminate comment rows on import or after - DONE
+# 2. Replacing suppressed counts w/ State average - ???
+# 3. Adrressing missing data rows via Population table - DONE
+# 4. Final table layout - DONE
 #     State / StateCode / Year / Population / Homicides / HomicideRate / Suicides / SuicideRate
 # 
 # Issues to consider downstream:
@@ -55,8 +56,30 @@ homicides <- homicides %>%
   rename(StateCode = 'State Code') %>%
   rename(HomicideRate = 'Crude Rate')
   
-View(homicides)
+head(homicides)
 
+
+# Import CDC Minor Mortality Data
+cdc_minor_mortality <- read_tsv("CDC_PopEst_0-17_AllDeaths_1999-2016.txt")
+
+
+# Review data tables and remove duplicate/empty columns, make Rate numeric (maybe calculate separately)
+head(cdc_minor_mortality)
+cdc_minor_mortality$Notes <- NULL
+cdc_minor_mortality$'Year Code' <- NULL
+cdc_minor_mortality$`Crude Rate` <- as.numeric(suicides$`Crude Rate`)
+
+
+# Apply more standard and specific column headings
+cdc_minor_mortality <- cdc_minor_mortality %>%
+  rename(MinorPopulation = Population) %>%
+  rename(MinorDeaths = Deaths) %>%
+  rename(StateCode = 'State Code') %>%
+  rename(MinorMortalityRate = 'Crude Rate')
+
+
+# Check result
+head(cdc_minor_mortality)
 
 # Import CDC Population Data (baseline for combining data)
 population <- read_tsv("CDC_PopEst_1990-2016.txt")
@@ -76,18 +99,45 @@ population <- population %>%
 View(population)
 51*18
 
-
+population %>%
+  group_by(State) %>%
+  summarise(PopChg = (Population[Year == 2016] - Population[Year == 1999])/Population[Year == 1999]) %>%
+  arrange(desc(PopChg))
+  
+  
+join_key <- c("State", "Year")
 
 suicides %>%
+  filter(Population >= 1000000) %>%
   group_by(State) %>%
-  summarise(mean(SuicideRate), mean(Suicides))
+  summarise(AvgRate = mean(SuicideRate), AvgDeaths = mean(Suicides)) %>%
+  arrange(desc(AvgRate)) %>%
+  
+  View()
 
 homicides %>%
   group_by(State) %>%
-  summarise(mean(HomicideRate), mean(Homicides))
-
+  summarise(n(), mean(HomicideRate), mean(Homicides), sd(Homicides))
 
 homicides %>%
   filter(State == "Wyoming")
 
+cdc_homcide_suicide <- left_join(population, homicides, by = join_key) %>%
+  left_join(suicides, by = join_key) %>%
+  select(State, StateCode = StateCode.x, Year, Population = Population.x, Homicides, HomicideRate, Suicides, SuicideRate)
+View(cdc_homcide_suicide)
 
+cdc_aggregate <- cdc_homcide_suicide %>%
+  group_by(State) %>%
+  summarise(AvgHomicideRate = mean(HomicideRate, na.rm = TRUE), AvgSuicideRate = mean(SuicideRate, na.rm = TRUE), Ratio = AvgHomicideRate/AvgSuicideRate) %>%
+  arrange(desc(Ratio))
+View(cdc_aggregate)
+
+ggplot(cdc_aggregate, aes(x = AvgHomicideRate, y = AvgSuicideRate)) +
+       geom_point(position = "jitter") +
+       stat_smooth(method = "lm")
+
+
+
+
+View(anti_join(population, homicides, by = join_key))
